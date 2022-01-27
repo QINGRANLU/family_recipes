@@ -13,19 +13,26 @@ This is  a  package called tracknaliser.
       - produce a meaningful error message if there’s no internet connection or the webapp is inaccessible
 - load_tracksfile and query_tracks functions: return a Tracks object.
 - query_tracks function: takes as many arguments as needed to query the webapp and an optional  save argument that if set to True will save the obtained data as a JSON file, with the following patterntracks_{date}_{n_tracks}_{start}_{end}.json.
--
+
 ## Tasks: 
 Following information are inclued in installing package.  Subtasks are fulfilled for the main task required assignment2
+In this part, function of each file or folder will be explained. 
 - Task1：Interface and packaging (packaging the project and make it runnable by typing pip install . in command line)
   - command.py: used for print greenest 
   - tracknaliser.py: library style interface which make interactions with command line tool
   - greentrack.py: interface with the greentrack
-  - docs folder: documentation for python file, in ./build/html/index.html could be found the document. 
-- Task2: Main code
-  - _init_.py
+  - docs folder: 
+    - documentation for python file, in ./build/html/index.html could be found the document. 
+    - after code below, documentation will be viewable in a browser at http://localhost:8080
+```python
+cd repository/docs
+make html
+python -m http.server -d build/html 8080
+```
+- Task2: Main Object
   - singleTrack.py: Create a singletrack object and calculate the required value (co2, time, etc.)
   - trakcs.py: Create a tracks object which contain several singleTrack object and calculate the relative track(fastest, shortest, greenest, etc.)
- 
+
 - Task3: Improving k-means algorithm
   - clustering.py: original verson of algorithm with refactoring. 5 changes should be applied
   - clustering.numpy.py: numpy structures and functions are introduced.

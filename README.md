@@ -1,38 +1,41 @@
 # Finding the greenest track Group1
-## Tasks
-### Task1
-For full task file and requirements please read [assignment2](
+## Setup:
+This is  a  package called tracknaliser. 
+- greentrack.py : could expose a command-line interface to specify the details of the trip they plan to do and request a simple or verbose output:
+    - inputs: for --start and --end are x and y coordinates for the start and end of the travel planned. 
+    - outputs: The program should return three properties for the greenest path: 
+      - the coordinates pairs (x, y) of the path, i.e., the start, end and corners of the trip
+      - the total CO2 emission in kg
+      - the total time of travel (as HH:MM:SS).
+    - If the --verbose flag is passed, then that indicates that the program should report the journey in a human readable way, as shown in the example below.
+    - The command line interface should: 
+      - check the validity of the inputs before making the query (i.e, coordinates should be in the range from 0 up to 300) and produce helpful messages if they are invalid. \
+      - produce a meaningful error message if there’s no internet connection or the webapp is inaccessible
+- load_tracksfile and query_tracks functions: return a Tracks object.
+- query_tracks function: takes as many arguments as needed to query the webapp and an optional  save argument that if set to True will save the obtained data as a JSON file, with the following patterntracks_{date}_{n_tracks}_{start}_{end}.json.
+-
+## Tasks: 
+Following information are inclued in installing package.  Subtasks are fulfilled for the main task required assignment2
+- Task1：Interface and packaging (packaging the project and make it runnable by typing pip install . in command line)
+  - command.py: used for print greenest 
+  - tracknaliser.py: library style interface which make interactions with command line tool
+  - greentrack.py: interface with the greentrack
+  - docs folder: documentation for python file, in ./build/html/index.html could be found the document. 
+- Task2: Main code
+  - _init_.py
+  - singleTrack.py: Create a singletrack object and calculate the required value (co2, time, etc.)
+  - trakcs.py: Create a tracks object which contain several singleTrack object and calculate the relative track(fastest, shortest, greenest, etc.)
+ 
+- Task3: Improving k-means algorithm
+  - clustering.py: original verson of algorithm with refactoring. 5 changes should be applied
+  - clustering.numpy.py: numpy structures and functions are introduced.
+  - performance.py: compare 2 versions of code (used numpy or not)
+- Task4: Testing and Validation
+  - utils_validation.py: check the functions input validaty and give correct error type message
+  - test: automated tests to test functionality, in the test folder
 
-Make sure you have read the note chapters on [Testing basics](https://github-pages.ucl.ac.uk/rsd-engineeringcourse/ch03tests/01testingbasics.html), [The Fields of Saskatchewan](https://github-pages.ucl.ac.uk/rsd-engineeringcourse/ch03tests/02SaskatchewanFields.html) and [Test frameworks](https://github-pages.ucl.ac.uk/rsd-engineeringcourse/ch03tests/03pytest.html).
+- Task5: Collaboration
+Using Github to manage collaboration, problems are solved using issue, details please check: https://github.com/UCL-MPHY0021-21-22/tracknaliser-Working-Group-1
 
-If you haven't already, fork this repository and clone it on your computer.
 
-## Step 1: Understanding the existing code
-- Spend some time reading the code, try to run it and see whether you understand what's going on.
-- Have you seen [`datetime`](https://docs.python.org/3.7/library/datetime.html) before?
-- Play using your favourite tool (notebook, terminal, scripts) with the functions and objects used in `times.py`.
 
-## Step 2: Writing a unit test
-
-- Create a new file called `test_times.py` in the same directory where `times.py` is.
-- Make the `overlap_time` function accessible to that file. (*Hint*: You need to `import` the file).
-- Move the content from the `if __name__ ...` block from `times.py` to a function called `test_given_input` into `test_times.py`
-  and fill the gaps for `result` and `expected`. (For now, you can copy the output of the program as the expected value)
-```python
-def test_given_input():
-    ... 
-    result = ... 
-    expected = ...
-    assert result == expected
-```
-
-## Step 3: Running the tests
-- run `pytest` on that directory and see whether the test is picked up by `pytest` and whether it passes. If the test doesn't pass, see if you can find what is going wrong.
-
-## Step 4: Push to GitHub
-- When you are happy with your solution (or want some feedback!):
-    - Push your new code to your own fork.
-    - On GitHub, open a pull request from your fork to the original repository.
-    - In the description, include the text "Answers UCL-MPHY0021-21-22/RSE-Classwork#16". This will link your PR to this issue.
-    - On the PR text, comment on what you found difficult or interesting, or something you learned.
-- Continue with the remaining steps (7. - 9.) on [Classwork issue #16](https://github.com/UCL-MPHY0021-21-22/RSE-Classwork/issues/16)
